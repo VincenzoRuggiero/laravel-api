@@ -77,7 +77,11 @@ class ProjectController extends Controller
         $newProject = new Project();
         $newProject->fill($formData);
         $newProject->save();
-        $newProject->technologies()->sync($formData['technologies']);
+
+
+        if (isset($formData['technologies'])) {
+            $newProject->technologies()->sync($formData['technologies']);
+        }
 
         return redirect()->route('admin.projects.index');
     }
@@ -140,7 +144,12 @@ class ProjectController extends Controller
         ]);
         $formData['image'] = Storage::put('imgs/', $formData['image']);
         $project->update($formData);
-        $project->technologies()->sync($formData['technologies']);
+
+        if (isset($formData['technologies'])) {
+            $project->technologies()->sync($formData['technologies']);
+        } else {
+            $project->technologies()->sync([]);
+        }
 
         return redirect()->route('admin.projects.show', compact('project'));
 
