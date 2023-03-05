@@ -1,11 +1,11 @@
 <?php
 
-use App\Http\Controllers\Admin\DashboardController as DashboardController;
-use App\Http\Controllers\Admin\ProjectController as ProjectController;
-use App\Http\Controllers\Admin\TypeController as TypeController;
-use App\Http\Controllers\ProfileController;
-use App\Models\Project;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin\TechnologyController;
+use App\Http\Controllers\Admin\TypeController as TypeController;
+use App\Http\Controllers\Admin\ProjectController as ProjectController;
+use App\Http\Controllers\Admin\DashboardController as DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +27,7 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(
     Route::get('/dashboard',[DashboardController::class, 'index'])->name('dashboard');
     Route::resource('/projects', ProjectController::class);
     Route::resource('/types', TypeController::class);
+    Route::resource('/technologies', TechnologyController::class);
 });
 
 Route::middleware('auth')->group(function () {
