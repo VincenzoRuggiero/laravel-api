@@ -10,7 +10,7 @@ class Project extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title', 'description', 'link', 'created', 'slug', 'image', 'type_id'
+        'title', 'description', 'link', 'created', 'slug', 'image', 'type_id', 'technology_id',
     ];
 
     //Function that show each item's title after the domain instead of it's id
@@ -26,5 +26,9 @@ class Project extends Model
 
     public function technologies(){
         return $this->belongsToMany(Technology::class);
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 }
