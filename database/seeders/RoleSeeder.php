@@ -18,7 +18,7 @@ class RoleSeeder extends Seeder
         $roles = [
             [
                 'level' => '1',
-                'name' => 'God',
+                'name' => 'Super Admin',
             ],
             [
                 'level' => '2',
@@ -38,7 +38,7 @@ class RoleSeeder extends Seeder
             ],
             [
                 'level' => '6',
-                'name' => 'User',
+                'name' => 'Visitor',
             ],
         ];
 
